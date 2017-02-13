@@ -10,7 +10,6 @@ if __name__ == '__main__':
 
     with open('./README.md', 'r') as file:
         long_description = file.read()
-
     with open('./requirements.txt', 'r') as file:
         install_requires = file.read().splitlines()
 
