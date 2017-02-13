@@ -31,6 +31,3 @@ class BaseFoo:
     pass
 ```
 - Classes **should** implement `__repr__` methods.
-
-### Models
-- Models **should not** have docstrings.
