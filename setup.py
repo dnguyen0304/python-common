@@ -22,6 +22,7 @@ if __name__ == '__main__':
                      author_email='dnguyen0304@gmail.com',
                      license='MIT',
                      packages=[package_name,
+                               package_name + '.database',
                                package_name + '.logging',
                                package_name + '.utilities'],
                      install_requires=install_requires,
