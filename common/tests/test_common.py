@@ -6,7 +6,7 @@ from nose.tools import assert_in
 import common
 
 
-def test_package_initialization():
+def test_package_public_api():
 
     package_directory = os.path.abspath(
         os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
