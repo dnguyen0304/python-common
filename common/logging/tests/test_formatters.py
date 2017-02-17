@@ -28,9 +28,9 @@ class TestJsonFormatter:
 
         assert_true(output.startswith('{'))
         assert_true(output.endswith('}'))
-        assert_in("'levelname': 'levelname'", output)
-        assert_in("'name': 'name'", output)
-        assert_in("'message': 'message'", output)
+        assert_in('"levelname": "levelname"', output)
+        assert_in('"name": "name"', output)
+        assert_in('"message": "message"', output)
 
     def test_to_json_does_not_raise_attribute_error(self):
         raised_error = False

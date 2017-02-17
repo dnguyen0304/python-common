@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import json
 import logging
 import re
 
@@ -40,7 +41,7 @@ class JsonFormatter(logging.Formatter):
         except AttributeError:
             pass
 
-        return str(dict(format)) % record.__dict__
+        return json.dumps(dict(format)) % record.__dict__
 
     @staticmethod
     def _parse_format(format):

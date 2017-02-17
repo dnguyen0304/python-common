@@ -15,5 +15,5 @@ def test_format_extra_as_json():
 
     output = formatter.formatMessage(record=log_record)
 
-    assert_in("'foo': 'bar'", output)
+    assert_in('"foo": "bar"', output)
 
