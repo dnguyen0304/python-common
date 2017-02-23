@@ -14,7 +14,7 @@ if __name__ == '__main__':
         install_requires = file.read().splitlines()
 
     setuptools.setup(name=package_name,
-                     version='0.3',
+                     version='0.3.1',
                      description=description,
                      long_description=long_description,
                      url='https://github.com/dnguyen0304/python-common.git',
