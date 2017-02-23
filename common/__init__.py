@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from . import logging, utilities
+from . import database, logging, utilities
 
-__all__ = ['logging', 'utilities']
+__all__ = ['database', 'logging', 'utilities']
 
