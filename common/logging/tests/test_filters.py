@@ -14,12 +14,12 @@ class TestContextFilter:
         self.context_filter = filters.ContextFilter(application_name='foo')
         self.log_record = LogRecord()
 
-    def test_has_event_id(self):
+    def test_has_events_id(self):
         with assert_raises(AttributeError):
-            self.log_record.event_id
+            self.log_record.events_id
         self.context_filter.filter(log_record=self.log_record)
 
-        assert_true(self.log_record.event_id)
+        assert_true(self.log_record.events_id)
 
     def test_has_process_name(self):
         with assert_raises(AttributeError):
