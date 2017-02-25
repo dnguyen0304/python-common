@@ -21,6 +21,6 @@ class TestUnstructuredDataLogger:
                                        msg='',
                                        args='',
                                        exc_info='',
-                                       extra=extra or dict())
+                                       extra=extra)
         return log_record
 

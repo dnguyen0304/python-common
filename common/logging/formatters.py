@@ -36,5 +36,7 @@ class JsonFormatter(logging.Formatter):
             log_record.update(record._extra)
         except AttributeError:
             pass
+        except TypeError:
+            pass
         return json.dumps(log_record)
 
