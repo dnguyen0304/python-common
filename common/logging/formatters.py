@@ -30,12 +30,11 @@ class JsonFormatter(logging.Formatter):
         utilities.UnstructuredDataLogger
         """
 
-        log_record = json.loads(self._style._fmt, encoding='utf-8')
-
+        log_record = json.loads(self._style._fmt % record.__dict__,
+                                encoding='utf-8')
         try:
             log_record.update(record._extra)
         except AttributeError:
             pass
-
-        return json.dumps(log_record) % record.__dict__
+        return json.dumps(log_record)
 
