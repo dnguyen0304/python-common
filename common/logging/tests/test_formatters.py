@@ -43,3 +43,8 @@ class TestJsonFormatter:
             raised_error = True
         assert_false(raised_error)
 
+    def test_to_json_includes_extra_data_as_string_literals(self):
+        self.log_record._extra = {'foo': '%(foo)s'}
+        log_message = self.formatter.format(record=self.log_record)
+        assert_in('"foo": "%(foo)s"', log_message)
+
