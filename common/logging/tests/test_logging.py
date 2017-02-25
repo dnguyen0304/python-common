@@ -8,7 +8,7 @@ from common.logging import formatters
 from common.logging.tests import test_loggers
 
 
-def test_format_extra_as_json():
+def test_to_json_with_extra_data():
 
     extra = {'foo': 'bar'}
     log_record = test_loggers.TestUnstructuredDataLogger.get_log_record(extra=extra)
