@@ -20,3 +20,10 @@ def test_format_extra_as_json():
 
     assert_in('"foo": "bar"', output)
 
+
+def test_to_json_without_extra_data():
+
+    log_record = test_loggers.TestUnstructuredDataLogger.get_log_record()
+    fmt = str(dict())
+    formatters.JsonFormatter(fmt=fmt).format(record=log_record)
+
