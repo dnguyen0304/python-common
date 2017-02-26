@@ -31,7 +31,8 @@ class JsonFormatter(logging.Formatter):
         """
 
         log_record = json.loads(self._style._fmt % record.__dict__,
-                                encoding='utf-8')
+                                encoding='utf-8',
+                                strict=False)
         try:
             log_record.update(record._extra)
         except AttributeError:
