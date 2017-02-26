@@ -48,3 +48,7 @@ class TestJsonFormatter:
         log_message = self.formatter.format(record=self.log_record)
         assert_in('"foo": "%(foo)s"', log_message)
 
+    def test_to_json_accepts_control_characters(self):
+        self.log_record.msg = '\n'
+        self.formatter.format(record=self.log_record)
+
