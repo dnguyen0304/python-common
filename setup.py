@@ -10,11 +10,11 @@ if __name__ == '__main__':
 
     with open('./README.md', 'r') as file:
         long_description = file.read()
-    with open('./requirements.txt', 'r') as file:
+    with open('./requirements-minimal.txt', 'r') as file:
         install_requires = file.read().splitlines()
 
     setuptools.setup(name=package_name,
-                     version='0.4.2',
+                     version='0.4.3',
                      description=description,
                      long_description=long_description,
                      url='https://github.com/dnguyen0304/python-common.git',
@@ -29,4 +29,3 @@ if __name__ == '__main__':
                      test_suite='nose.collector',
                      tests_require=['nose'],
                      include_package_data=True)
-
