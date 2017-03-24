@@ -131,4 +131,3 @@ Below is the list of acceptable values. Note they are case-sensitive.
         raise KeyError(message.format(environment_name=environment.name))
 
     return parsed_configuration
-

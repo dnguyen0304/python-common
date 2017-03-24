@@ -78,4 +78,3 @@ def test_get_configuration_invalid_schema():
 
     utilities.get_configuration(application_name='foo',
                                 _configuration_file=_configuration_file)
-
