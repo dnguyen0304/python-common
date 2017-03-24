@@ -9,4 +9,4 @@
 - Added release notes.
 
 ##### Fixes
-- Fixed `requirements.txt` including nonessential dependencies.
+- FIxed `setup.py` including nonessential dependencies.
