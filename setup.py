@@ -10,8 +10,9 @@ if __name__ == '__main__':
 
     with open('./README.md', 'r') as file:
         long_description = file.read()
-    with open('./requirements-minimal.txt', 'r') as file:
-        install_requires = file.read().splitlines()
+
+    install_requires = ['kafka-python==1.3.3',
+                        'SQLAlchemy==1.1.6']
 
     setuptools.setup(name=package_name,
                      version='0.4.3',
