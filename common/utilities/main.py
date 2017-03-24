@@ -30,23 +30,13 @@ def get_configuration(application_name, _configuration_file=None):
 
     The application name is standardized. The convention is to use
     uppercase without delimiters. The configuration file's contents
-    **must** be formatted as JSON with the top-level objects specifying
-    the environment. For example:
-
-    ```
-    {
-      "Production": {},
-      "Staging": {},
-      ...,
-    }
-    ```
+    **must** be formatted as JSON.
 
     Parameters
     ----------
     application_name : str
-        Application name.
     _configuration_file : File, optional
-        Used for testing. Defaults to None.
+        Used internally for testing. Defaults to None.
 
     Returns
     -------
@@ -56,12 +46,7 @@ def get_configuration(application_name, _configuration_file=None):
     Raises
     ------
     EnvironmentError
-        If the application's environment has not been set.
-    EnvironmentError
         If the application's configuration file path has not been set.
-    KeyError
-        If the configuration file does not have a top-level object
-        corresponding to the environment.
     """
 
     message = """
@@ -83,34 +68,15 @@ all future shell sessions, from the terminal run
 
 """
 
-    processed_application_name = application_name.replace('_', '')
-    environment_variable_name = processed_application_name.upper() + '_ENVIRONMENT'
-
-    try:
-        environment = getattr(Environment, os.environ[environment_variable_name])
-    except (AttributeError, KeyError):
-        extension = """
-Below is the list of acceptable values. Note they are case-sensitive.
-    - Production
-    - Staging
-    - Testing
-    - Development
-
-"""
-        raise EnvironmentError(
-            message.format(
-                environment_variable_name=environment_variable_name,
-                environment_variable_value=Environment.Production.name)
-            + extension)
-
     if _configuration_file is None:
+        processed_application_name = application_name.replace('_', '')
         environment_variable_name = (
             processed_application_name.upper() + '_CONFIGURATION_FILE_PATH')
 
         try:
             configuration_file_path = os.environ[environment_variable_name]
         except KeyError:
-            environment_variable_value = '/opt/{}/application.config'.format(
+            environment_variable_value = '/opt/{0}/{0}.application.config'.format(
                 processed_application_name.lower())
             raise EnvironmentError(message.format(
                 environment_variable_name=environment_variable_name,
@@ -121,13 +87,6 @@ Below is the list of acceptable values. Note they are case-sensitive.
     else:
         raw_configuration = _configuration_file.read()
 
-    try:
-        parsed_configuration = json.loads(raw_configuration)[environment.name]
-    except KeyError:
-        message = (
-            """The configuration file does not have a top-level object """
-            """corresponding to the environment (i.e. """
-            """"{environment_name}").""")
-        raise KeyError(message.format(environment_name=environment.name))
+    parsed_configuration = json.loads(raw_configuration)
 
     return parsed_configuration
